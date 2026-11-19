@@ -1,10 +1,10 @@
-class GameBoard {
+export class GameBoard {
   #BOARD_SIZE = 10;
 
   #createBoard() {
-    const board = Array(10);
+    let board = [];
     for (let i = 0; i < this.#BOARD_SIZE; i++) {
-      board[i] = Array(10);
+      board.push(["", "", "", "", "", "", "", "", "", ""]);
     }
     return board;
   }
@@ -13,6 +13,10 @@ class GameBoard {
     this.playerBoard = this.#createBoard();
     this.opponentBoard = this.#createBoard();
   }
-}
 
-s;
+  placeShip(coors, ship) {
+    coors.forEach((coor) => {
+      this.playerBoard[coor[1]][coor[0]] = ship;
+    });
+  }
+}
