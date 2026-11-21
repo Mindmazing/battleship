@@ -16,4 +16,12 @@ describe("Test GameBoard Class", () => {
       ship,
     );
   });
+  test("Hits ship correctly", () => {
+    gameBoard.recieveHit([2, 1]);
+    gameBoard.recieveHit([2, 2]);
+    expect(ship.hits).toBe(2);
+  });
+  test("Returns false if target missed", () => {
+    expect(gameBoard.recieveHit([3, 1])).toBeFalsy();
+  });
 });

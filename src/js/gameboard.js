@@ -16,7 +16,16 @@ export class GameBoard {
 
   placeShip(coors, ship) {
     coors.forEach((coor) => {
-      this.playerBoard[coor[1]][coor[0]] = ship;
+      this.playerBoard[coor[1] - 1][coor[0] - 1] = ship;
     });
+  }
+
+  recieveHit(coor) {
+    let targetTile = this.playerBoard[coor[1] - 1][coor[0] - 1];
+    if (targetTile != "") {
+      targetTile.hit();
+      return true;
+    }
+    return false;
   }
 }
