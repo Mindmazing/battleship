@@ -28,4 +28,8 @@ export class GameBoard {
     }
     return false;
   }
+
+  placeHit(coor, succesfullHit) {
+    this.opponentBoard[coor[1] - 1][coor[0] - 1] = succesfullHit ? "x" : "o";
+  }
 }

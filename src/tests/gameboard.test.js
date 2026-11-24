@@ -24,4 +24,10 @@ describe("Test GameBoard Class", () => {
   test("Returns false if target missed", () => {
     expect(gameBoard.recieveHit([3, 1])).toBeFalsy();
   });
+
+  test("places hit on oppent board", () => {
+    let succesfullHit = gameBoard.recieveHit([2, 3]);
+    gameBoard.placeHit([2, 3], succesfullHit);
+    expect(gameBoard.opponentBoard[3 - 1][2 - 1]).toBe("x");
+  });
 });
