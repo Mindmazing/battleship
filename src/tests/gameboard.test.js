@@ -1,3 +1,4 @@
+import { experiments } from "webpack";
 import { GameBoard } from "../js/gameboard";
 import { Ship } from "../js/ship";
 
@@ -33,8 +34,17 @@ describe("Test GameBoard Class", () => {
 
   test("Returns flase if hit placement is not valid", () => {
     let succesfullHit = gameBoard.recieveHit([2, 3]);
-
     let validHit = gameBoard.placeHit([2, 3], succesfullHit);
     expect(validHit).toBeFalsy();
+  });
+
+  test("Returns true if every ship on gameboard is sunk", () => {
+    // place hits
+    gameBoard.recieveHit([2, 3]);
+    gameBoard.recieveHit([2, 3]);
+    gameBoard.recieveHit([2, 3]);
+    gameBoard.recieveHit([2, 3]);
+
+    expect(gameBoard.isEveryShipSunk()).toBeTruthy();
   });
 });

@@ -5,7 +5,11 @@ export class Ship {
   }
 
   hit() {
-    this.hits++;
+    if (!this.isSunk()) {
+      this.hits++;
+      return true;
+    }
+    return false;
   }
 
   isSunk() {
