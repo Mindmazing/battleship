@@ -30,4 +30,11 @@ describe("Test GameBoard Class", () => {
     gameBoard.placeHit([2, 3], succesfullHit);
     expect(gameBoard.opponentBoard[3 - 1][2 - 1]).toBe("x");
   });
+
+  test("Returns flase if hit placement is not valid", () => {
+    let succesfullHit = gameBoard.recieveHit([2, 3]);
+
+    let validHit = gameBoard.placeHit([2, 3], succesfullHit);
+    expect(validHit).toBeFalsy();
+  });
 });
